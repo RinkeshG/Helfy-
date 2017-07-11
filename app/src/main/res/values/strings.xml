@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Helfy</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="password">password</string>
+    <string name="register_here">Register Here</string>
+    <string name="title_activity_navigation">Navigation</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="register">Register</string>
+    <string name="fullname">Full Name</string>
+    <string name="mobile">Mobile Number</string>
+    <string name="tologin">Login</string>
+    <string name="credentials">Enter Credentials</string>
+    <string name="notconnected">Not Connected To Internet</string>
+    <string name="connected">Connected to Internet</string>
+    <string name="shortpassword">Password must have 6 Characters</string>
+    <string name="helfytext">Helfy</string>
+    <string name="tagline">Make the most of your givings!</string>
+    <string name="splashtext1">Got Some Used stuff?</string>
+    <string name="next">Next</string>
+</resources>
