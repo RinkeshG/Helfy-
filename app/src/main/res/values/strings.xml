@@ -22,4 +22,5 @@
     <string name="tagline">Make the most of your givings!</string>
     <string name="splashtext1">Got Some Used stuff?</string>
     <string name="next">Next</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

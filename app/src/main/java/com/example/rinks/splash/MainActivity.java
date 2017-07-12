@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(email.equals(oEmail) && pass.equals(oPass)) {
 
-            Intent intent = new Intent(this, Navigation.class);
+            Intent intent = new Intent(this, First_screen.class);
             startActivity(intent);
             finish();
         } else {
