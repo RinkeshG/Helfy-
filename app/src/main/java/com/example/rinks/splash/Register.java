@@ -1,406 +1,154 @@
 package com.example.rinks.splash;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
 
-   /* private TextView header;
+    private FirebaseAuth auth;
 
-    private Typeface logo;
+    private EditText signupInputEmail;
 
-    private EditText fullname;
+    private EditText signupInputPassword;
 
-    private EditText email;
+    private static final String TAG = "SignUpActivity";
 
-    private EditText password;
 
-    private EditText mobile;
-
-    private Animation slide;
-
-    private Button tologin;
-
-    private Button register;
-
-    private LinearLayout registerpanel;
-
-    private String getname;
-
-    private String  getemail;
-
-    private String getpassword;
-
-    private String getmobile; */
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // logo = Typeface.createFromAsset(getAssets(), "fonts/cm.ttf");
-
         setContentView(R.layout.activity_register);
+        auth = FirebaseAuth.getInstance();
 
-      /*  header = (TextView) findViewById(R.id.header);
 
-        fullname = (EditText) findViewById(R.id.fullname);
+        //  ProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-        email = (EditText) findViewById(R.id.email);
+        signupInputEmail = (EditText) findViewById(R.id.email);
+        signupInputPassword = (EditText) findViewById(R.id.password);
 
-        password = (EditText) findViewById(R.id.password);
+        Button btnSignUp = (Button) findViewById(R.id.register);
+        Button btnLinkToLogIn = (Button) findViewById(R.id.backtologin);
 
-        mobile = (EditText) findViewById(R.id.mobile);
-
-        tologin = (Button) findViewById(R.id.tologin);
-
-        register = (Button) findViewById(R.id.register);
-
-        //register.setOnClickListener(this);
-
-        // tologin.setOnClickListener(this);
-
-        registerpanel = (LinearLayout) findViewById(R.id.container);
-
-        header.setTypeface(logo);
-
-        registerpanel.setBackgroundColor(Color.parseColor("#ED4337"));
-
-        register.setText(getResources().getString(R.string.credentials));
-
-        register.setEnabled(false);
-
-        headerEdit();
-
-        headerSlide();
-
-        statusBar();
-
-        initialInternetCheck();
-
-    }
-
-    private boolean isOnline() {
-
-        final ConnectivityManager connectivityManager = ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE));
-
-        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
-
-    }
-
-    private void headerEdit() {
-
-        header.setTypeface(logo);
-
-        header.setText(getResources().getString(R.string.app_name));
-
-        header.setTextSize(100);
-
-    }
-
-    private void headerSlide() {
-
-        slide = new TranslateAnimation(0, 0, 500, 0);
-
-        slide.setDuration(1000);
-
-        registerpanel.setAnimation(slide);
-
-        tologin.setAnimation(slide);
-    }
-
-    private void statusBar() {
-
-        Window window = getWindow();
-
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-    }
-
-    public void internetCheck() {
-
-        if (!isOnline()) {
-
-            registerpanel.setBackgroundColor(Color.parseColor("#ED4337"));
-
-            register.setText(getResources().getString(R.string.notconnected));
-
-            register.setEnabled(false);
-        } else {
-
-            credentialCheck();
-        }
-    }
-
-    public void initialInternetCheck() {
-
-        if (!isOnline()) {
-
-            registerpanel.setBackgroundColor(Color.parseColor("#ED4337"));
-
-            register.setText(getResources().getString(R.string.notconnected));
-
-            register.setEnabled(false);
-        }
-    }
-
-    private void showNotification(boolean isConnected) {
-
-        if (isConnected) {
-
-            registerpanel.setBackgroundColor(Color.parseColor("#8bc34a"));
-
-            register.setText(getResources().getString(R.string.connected));
-
-            register.setEnabled(false);
-        }
-    }
-
-    private boolean emailCheck(CharSequence email) {
-
-        if (email == null) {
-
-            return false;
-        } else {
-
-            return Patterns.EMAIL_ADDRESS.matcher(email).matches();
-        }
-    }
-
-    private void credentialCheck() {
-
-        getname = fullname.getText().toString().trim();
-
-        getemail = email.getText().toString().trim();
-
-        getpassword = password.getText().toString().trim();
-
-        getmobile = mobile.getText().toString().trim();
-
-        if (!emailCheck(getemail)) {
-
-            getname = fullname.getText().toString().trim();
-
-            getemail = email.getText().toString().trim();
-
-            getpassword = password.getText().toString().trim();
-
-            getmobile = mobile.getText().toString().trim();
-        }
-
-        if (getpassword.length() < 6) {
-
-            registerpanel.setBackgroundColor(Color.parseColor("##ED4337"));
-
-            register.setText(getResources().getString(R.string.shortpassword));
-
-            register.setEnabled(false);
-        }
-
-        if (getmobile.length() != 10) {
-
-            registerpanel.setBackgroundColor(Color.parseColor("##ED4337"));
-
-            register.setText(getResources().getString(R.id.invalidmobile));
-
-            register.setEnabled(false);
-        }
-
-        if (emailCheck(getemail) && getpassword.length() >= 6 && getmobile.length() == 10) {
-
-            userRegister(getname, getemail, getpassword, getmobile);
-
-        }
-    }
-
-    private void userRegister(final String getname, final String getemail, final String getpassword, final String getmobile) {
-
-        class UserLoginClass extends AsyncTask<String, void, String> {
-
-            ProgressBar loading;
-
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected void onPreExecuted() {
-                super.onPreExecute();
+            public void onClick(View view) {
+                submitForm();
 
-                loading = new ProgressBar(Register.this, R.style.MyTheme);
-                loading.setCancelable(false);
-                loading.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
-                loading.show();
             }
+        });
 
+        btnLinkToLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected void onPostExecute(String s) {
+            public void onClick(View view) {
+                Intent intent = new Intent(Register.this, Navigation.class);
+                startActivity(intent);
+            }
+        });
+    }
 
-                super.onPostExecute(s);
-                loading.dismiss();
+    private void submitForm() {
 
-                char c s.charAt(23);
+        String email = signupInputEmail.getText().toString().trim();
+        String password = signupInputPassword.getText().toString().trim();
 
-                String f = String.valueOf(c);
-
-                if (f.equals("{")) {
-
-                    registerpanel.setBackgroundColor(Color.parseColor("#8bc34a"));
-
-                    register.setText(getResources().getString(R.id.registersuccess));
-
-                    register.setEnabled(false);
-
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            Intent i = new Intent(Register.this, MainActivity.class);
-
-                            i.putExtra("mobile", getmobile);
-
-                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                            startActivity(i);
-
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                            i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        if(!checkEmail()) {
+            return;
+        }
+        if(!checkPassword()) {
+            return;
+        }
 
 
+        //  ProgressBar.setVisibility(View.VISIBLE);
+        //create user
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG,"createUserWithEmail:onComplete:" + task.isSuccessful());
+                        // ProgressBar.setVisibility(View.GONE);
+                        // If sign in fails, Log the message to the LogCat. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        if (!task.isSuccessful()) {
+                            Log.d(TAG,"Authentication failed." + task.getException());
+
+                        } else {
+                            startActivity(new Intent(Register.this, Navigation.class));
+                            finish();
                         }
-
-
-                    }, 2000);
-
-                } else {
-
-                    registerpanel.setBackgroundColor(Color.parseColor("#ED4337"));
-
-                    register.setText(s);
-
-                    register.setEnabled(false);
-                }
-            }
-
-            @Override
-            protected String doInBackground(String... params) {
-
-                HashMap<String, String> data = new HashMap<>();
-
-                data.put("fullname", params[0]);
-                data.put("email", params[1]);
-                data.put("password", params[2]);
-                data.put("mobile", params[3]);
-
-                RegisterUserClass ruc = new RegisterUserClass();
-
-                String result = ruc.sendPostRequest(REGISTER_URL, data);
-
-                return result;
-            }
-
-        }
-
-        UserLoginClass ulc = new UserLoginClass();
-        ulc.execute(getname, getemail, getpassword, getmobile);
-
+                    }
+                });
+        Toast.makeText(getApplicationContext(), "You are successfully Registered !!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
-    private void updateButton() {
-
-        int nameLength = fullname.getText().length();
-
-        int emailLength = email.getText().length();
-
-        int passwordLength = password.getText().length();
-
-        int mobileLength = mobile.getText().length();
-
-        if (nameLength > 0 && emailLength > 0 && passwordLength > 0 && mobileLength > 0) {
-
-            registerpanel.setBackgroundColor(Color.parseColor("#8bc34a"));
-
-            register.setText(getResources().getString(R.string.register));
-
-            register.setEnabled(true);
-
-        } else {
-
-            registerpanel.setBackgroundColor(Color.parseColor("#ED4337"));
-
-            register.setText(getResources().getString(R.string.credentials));
-
-            register.setEnabled(false);
-
+    private boolean checkEmail() {
+        String email = signupInputEmail.getText().toString().trim();
+        if (email.isEmpty() || !isEmailValid(email)) {
+            signupInputEmail.setError(getString(R.string.err_msg_required));
+            requestFocus(signupInputEmail);
+            return false;
         }
+        return true;
     }
 
+    private boolean checkPassword() {
 
-        @Override
-                protected void onResume() {
-            super.onResume();
-
-            AppController.getInstance().setConnectivityListener(this);
-
-            TextWatcher check = new TextWatcher() {
-
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-
-                    updateButton();
-
-                }
-
-            };
-
-            fullname.addTextChangedListener(check);
-
-            email.addTextChangedListener(check);
-
-            password.addTextChangedListener(check);
-
-            mobile.addTextChangedListener(check);
-
+        String password = signupInputPassword.getText().toString().trim();
+        if (password.isEmpty() || !isPasswordValid(password)) {
+            requestFocus(signupInputPassword);
+            return false;
         }
+        return true;
+    }
+
+    private static boolean isEmailValid(String email) {
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    private static boolean isPasswordValid(String password){
+        return (password.length() >= 6);
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+    }
 
     @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-
-        showNotification(isConnected);
-
+    protected void onResume() {
+        super.onResume();
+        // ProgressBar.setVisibility(View.GONE);
     }
 
-
-    @Override
-    public void onClick(View view) {
-
-        if (view == register) {
-
-            internetCheck();
-
-        }
-
-        if (view == tologin) {
-
-            Intent go = new Intent(Register.this, MainActivity.class);
-
-            startActivity(go);
-
-            finish();
-
-        }
-
+    public void backtologin(View view) {
+        Intent intent = new Intent(Register.this, Navigation.class);
+        startActivity(intent);
+        finish();
     }
 }
 
-  } */
-    }
-}
+
+
+
+

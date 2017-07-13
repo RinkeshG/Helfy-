@@ -22,5 +22,26 @@
     <string name="tagline">Make the most of your givings!</string>
     <string name="splashtext1">Got Some Used stuff?</string>
     <string name="next">Next</string>
+<<<<<<< Updated upstream
     <string name="title_activity_maps">Map</string>
+=======
+    <string name="minimum_password">Minmum length should be 6</string>
+    <string name="minimumpassword">minimum length</string>
+    <string name="auth_failed">connection failed</string>
+    <string name="back_to_login">Back to login</string>
+    <string name="err_msg_required">Give proper input</string>
+    <string name="clothes">Clothes</string>
+    <string name="stationery">Stationery</string>
+    <string name="bookshelf">bookshelf</string>
+    <string name="furniture">furniture</string>
+    <string name="Gadgets">Gadgets</string>
+    <string name="Games">Games</string>
+    <string name="helfy">Helfy</string>
+    <string name="tag">Make the Most of your givings</string>
+    <string name="donate">Donate</string>
+    <string name="rewards">Rewards</string>
+    <string name="locate">Locate</string>
+    <string name="location">Location</string>
+    <string name="Pickuponmap">Pick Up on Map</string>
+>>>>>>> Stashed changes
 </resources>

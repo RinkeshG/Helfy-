@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rinks.splash.Navigation"
+    android:background="#ffffff">
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="133dp"
+        android:src="@drawable/tshirt"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:contentDescription="@string/clothes"
+        android:onClick="DonateClick">
+
+    </ImageView>
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/rule"
+        android:contentDescription="@string/stationery"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView4"
+        android:onClick="DonateClick">
+
+    </ImageView>
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/bookshelf"
+        android:contentDescription="@string/bookshelf"
+        android:layout_alignTop="@+id/imageView4"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="31dp"
+        android:layout_marginEnd="31dp"
+        android:id="@+id/imageView5"
+        android:onClick="DonateClick">
+
+    </ImageView>
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/furniture"
+        android:contentDescription="@string/furniture"
+        android:layout_below="@+id/imageView"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_marginTop="72dp"
+        android:id="@+id/imageView6"
+        android:onClick="DonateClick">
+
+    </ImageView>
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/smartphone"
+        android:contentDescription="@string/Gadgets"
+        android:layout_alignTop="@+id/imageView6"
+        android:layout_alignLeft="@+id/imageView4"
+        android:layout_alignStart="@+id/imageView4"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/imageView7"
+        android:onClick="DonateClick">
+
+    </ImageView>
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/games"
+        android:contentDescription="@string/Games"
+        android:layout_alignTop="@+id/imageView7"
+        android:layout_alignLeft="@+id/imageView5"
+        android:layout_alignStart="@+id/imageView5"
+        android:onClick="DonateClick">
+
+    </ImageView>
+
+
+
+
+
+
+</RelativeLayout>

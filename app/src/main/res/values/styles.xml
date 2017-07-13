@@ -27,6 +27,12 @@
 
     </style>
 
+    <style name="navstyle" parent="Theme.AppCompat.NoActionBar">
+
+        <item name="android:windowBackground">@drawable/navback</item>
+
+    </style>
+
 
 
 

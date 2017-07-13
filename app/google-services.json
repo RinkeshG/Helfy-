@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "78573990081",
+    "firebase_url": "https://chatfriendly-1fd41.firebaseio.com",
+    "project_id": "chatfriendly-1fd41",
+    "storage_bucket": "chatfriendly-1fd41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78573990081:android:27524b1a74abd29d",
+        "android_client_info": {
+          "package_name": "com.example.rinks.gurukulbeta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78573990081-d9brv19444g8i5j42jbd5j2hgp0pi5eu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwB1Edk1gTjxH2v0eI2CSKzvfXU4kqYSA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78573990081:android:8b6339db8ccbed4a",
+        "android_client_info": {
+          "package_name": "com.example.rinks.splash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78573990081-d9brv19444g8i5j42jbd5j2hgp0pi5eu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwB1Edk1gTjxH2v0eI2CSKzvfXU4kqYSA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

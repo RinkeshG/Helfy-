@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rinks.splash">
 
+<<<<<<< Updated upstream
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -9,6 +10,9 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+=======
+    <uses-permission android:name="android.permission.INTERNET" />
+>>>>>>> Stashed changes
 
     <application
         android:allowBackup="true"
@@ -38,6 +42,7 @@
         <activity
             android:name=".Splash3"
             android:theme="@style/SplashTheme2" />
+<<<<<<< Updated upstream
         <activity android:name=".First_screen" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -54,6 +59,19 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"></activity>
+=======
+        <activity
+            android:name=".Navigation"
+            android:theme="@style/navstyle" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ab24f54e764b623a7df9abd2f20211d9e1cd3fce" />
+
+        <activity
+            android:name=".Donate"
+            android:theme="@style/navstyle" />
+>>>>>>> Stashed changes
     </application>
 
 </manifest>

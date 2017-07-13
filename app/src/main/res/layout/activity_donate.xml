@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rinks.splash.Donate"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/headercontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:padding="15sp"
+        android:orientation="vertical"
+        android:background="@drawable/navback">
+
+        <TextView
+            android:id="@+id/appname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="35sp"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:fontFamily="serif"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tag"
+            android:textStyle="bold"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-condensed"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/statusbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headercontainer"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:background="#cbae82">
+
+        <TextView
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:text="@string/locate"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:background="@drawable/flowround"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:text="@string/donate"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:text="@string/rewards"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+</RelativeLayout>
